@@ -1,0 +1,20 @@
+<div class="container">
+  <form action="index.html" class="form-signin" (submit)="signin()" #form="ngForm">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email addres" required="" [(ngModel)]="signupForm.email" #email="ngModel">
+    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+      Email is required
+    </div>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password" required [(ngModel)]="signupForm.password" #password="ngModel">
+    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+      Password is required
+    </div>
+    <div class="alert alert-danger" *ngIf="error!=''">
+      {{error}}
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit"[disabled]="!form.form.valid">Sign in</button>
+  </form>
+  <p class="info"><a routerLink="/signup">Don't have an account? Create one here.</a></p>
+</div>
